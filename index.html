@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sophisticated Signatures | Premier Notary & Loan Signing Services</title>
+  <meta name="description" content="Sophisticated Signatures — premier mobile and remote notary services in Jacksonville, FL. Estate planning, loan signings, RON, and healthcare facility visits with white-glove professionalism." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #C9A098;
+      --gold-light: #E0C4BF;
+      --gold-dark: #A87870;
+      --black: #0D0F0E;
+      --off-black: #141A17;
+      --dark: #1E2923;
+      --mid: #4A5C53;
+      --light: #D8E4DF;
+      --cream: #F0F5F2;
+      --white: #FBFDFB;
+      --emerald: #1A6B4A;
+      --emerald-deep: #0F4A32;
+      --emerald-bright: #2A8A60;
+      --emerald-pale: #D4EDE3;
+      --grey: #6B7B74;
+      --grey-light: #B8C8C0;
+      --grey-dark: #3A4A44;
+      --nav-h: 80px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--white);
+      color: var(--dark);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NAVIGATION ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 4vw;
+      z-index: 100;
+      transition: background 0.4s, box-shadow 0.4s;
+    }
+
+    nav.scrolled {
+      background: rgba(253,252,251,0.97);
+      box-shadow: 0 1px 0 rgba(180,145,122,0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--white);
+      text-decoration: none;
+      transition: color 0.4s;
+    }
+
+    nav.scrolled .nav-logo { color: var(--black); }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    nav.scrolled .nav-links a { color: var(--mid); }
+    .nav-links a:hover { color: var(--gold) !important; }
+
+    .nav-book {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 10px 24px;
+      border: 1px solid rgba(255,255,255,0.5);
+      color: var(--white);
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    nav.scrolled .nav-book {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .nav-book:hover {
+      background: var(--gold) !important;
+      border-color: var(--gold) !important;
+      color: var(--white) !important;
+    }
+
+    .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+    .hamburger span { display: block; width: 24px; height: 1px; background: var(--white); transition: all 0.3s; }
+    nav.scrolled .hamburger span { background: var(--dark); }
+
+    /* ── HERO ── */
+    #home {
+      min-height: 100vh;
+      background: linear-gradient(160deg, #0A1F16 0%, #0F3525 50%, #0D2A1D 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 5vw 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #home::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 60%, rgba(26,107,74,0.25) 0%, transparent 70%),
+        radial-gradient(ellipse 80% 40% at 20% 20%, rgba(201,160,152,0.08) 0%, transparent 60%);
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp 1s 0.3s forwards;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(38px, 7vw, 76px);
+      font-weight: 400;
+      line-height: 1.12;
+      color: var(--white);
+      max-width: 900px;
+      margin: 0 auto 28px;
+      opacity: 0;
+      animation: fadeUp 1s 0.5s forwards;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .hero-sub {
+      font-size: 15px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.55);
+      max-width: 580px;
+      margin: 0 auto 52px;
+      letter-spacing: 0.02em;
+      opacity: 0;
+      animation: fadeUp 1s 0.7s forwards;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 1s 0.9s forwards;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 16px 40px;
+      background: var(--gold);
+      color: var(--white);
+      text-decoration: none;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .btn-primary:hover { background: var(--gold-dark); transform: translateY(-1px); }
+
+    .btn-outline {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 16px 40px;
+      border: 1px solid rgba(255,255,255,0.3);
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold-light);
+      color: var(--gold-light);
+    }
+
+    .hero-divider {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 80px;
+      background: linear-gradient(to bottom, transparent, var(--white));
+    }
+
+    /* ── TICKER ── */
+    .ticker {
+      background: var(--emerald);
+      color: var(--white);
+      padding: 14px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .ticker-inner {
+      display: inline-block;
+      animation: ticker 28s linear infinite;
+    }
+
+    .ticker-inner span {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 400;
+      margin-right: 64px;
+    }
+
+    .ticker-inner span::before {
+      content: '✦';
+      margin-right: 64px;
+      opacity: 0.5;
+      font-size: 8px;
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 100px 5vw; }
+
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--black);
+      margin-bottom: 20px;
+    }
+
+    .section-body {
+      font-size: 15px;
+      color: var(--mid);
+      max-width: 600px;
+      line-height: 1.8;
+    }
+
+    /* ── ABOUT / WHY ── */
+    #about {
+      background: var(--cream);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-pills {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 36px;
+    }
+
+    .pill {
+      padding: 14px 16px;
+      background: var(--white);
+      border-left: 2px solid var(--gold);
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: var(--dark);
+    }
+
+    .about-visual {
+      position: relative;
+    }
+
+    .about-visual .quote-block {
+      background: var(--emerald-deep);
+      color: var(--white);
+      padding: 48px 40px;
+      position: relative;
+    }
+
+    .quote-block::before {
+      content: '"';
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 120px;
+      color: var(--gold);
+      opacity: 0.2;
+      position: absolute;
+      top: -20px;
+      left: 24px;
+      line-height: 1;
+    }
+
+    .quote-block p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.85);
+      position: relative;
+      z-index: 1;
+    }
+
+    .quote-block cite {
+      display: block;
+      font-style: normal;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 20px;
+    }
+
+    .about-accent {
+      display: flex;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .accent-stat {
+      flex: 1;
+      background: var(--gold);
+      color: var(--white);
+      padding: 24px 20px;
+      text-align: center;
+    }
+
+    .accent-stat .num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px;
+      font-weight: 400;
+      display: block;
+    }
+
+    .accent-stat .lbl {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0.85;
+    }
+
+    /* ── WHO WE SERVE ── */
+    #serve { background: var(--white); }
+
+    .serve-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--grey-light);
+      margin-top: 52px;
+      border: 1px solid var(--grey-light);
+    }
+
+    .serve-card {
+      background: var(--white);
+      padding: 36px 32px;
+      transition: background 0.3s;
+    }
+
+    .serve-card:hover { background: var(--cream); }
+
+    .serve-icon {
+      width: 36px;
+      height: 36px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 12px;
+    }
+
+    .serve-icon svg { fill: var(--gold); }
+
+    .serve-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--black);
+      margin-bottom: 10px;
+    }
+
+    .serve-card p {
+      font-size: 13px;
+      color: var(--mid);
+      line-height: 1.7;
+    }
+
+    /* ── SERVICES ── */
+    #services { background: #0D2A1D; }
+
+    #services .section-title { color: var(--white); }
+    #services .section-label { color: var(--gold-light); }
+    #services .section-body { color: rgba(255,255,255,0.45); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: rgba(26,107,74,0.2);
+      margin-top: 60px;
+    }
+
+    .svc-card {
+      background: #0D2A1D;
+      padding: 44px 40px;
+      position: relative;
+      transition: background 0.3s;
+      overflow: hidden;
+    }
+
+    .svc-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 2px;
+      height: 0;
+      background: var(--gold);
+      transition: height 0.4s;
+    }
+
+    .svc-card:hover::before { height: 100%; }
+    .svc-card:hover { background: rgba(26,107,74,0.15); }
+
+    .svc-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 48px;
+      font-weight: 300;
+      color: rgba(180,145,122,0.18);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .svc-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 14px;
+    }
+
+    .svc-card p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+
+    .svc-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .svc-list li {
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+      padding-left: 14px;
+      position: relative;
+    }
+
+    .svc-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      opacity: 0.6;
+    }
+
+    /* ── STANDARD ── */
+    #standard {
+      background: var(--cream);
+      text-align: center;
+      padding: 120px 5vw;
+    }
+
+    #standard .section-title { margin: 0 auto 16px; }
+    #standard .section-body { margin: 0 auto 60px; text-align: left; }
+
+    .standard-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .std-item {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .std-dot {
+      width: 10px;
+      height: 10px;
+      background: var(--gold);
+      border-radius: 50%;
+    }
+
+    .std-item h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--black);
+    }
+
+    .std-item p {
+      font-size: 13px;
+      color: var(--mid);
+      line-height: 1.7;
+    }
+
+    /* ── LUXURY BAND ── */
+    .luxury-band {
+      background: var(--emerald-deep);
+      padding: 80px 5vw;
+      text-align: center;
+    }
+
+    .luxury-band .eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+
+    .luxury-band h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 5vw, 56px);
+      font-weight: 300;
+      color: var(--white);
+      max-width: 820px;
+      margin: 0 auto;
+      line-height: 1.25;
+    }
+
+    .luxury-band h2 em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    /* ── FOUNDER ── */
+    #founder {
+      background: var(--white);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .founder-img-wrap {
+      position: relative;
+      aspect-ratio: 3/4;
+      background: var(--cream);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .founder-img-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 40%;
+      background: linear-gradient(to top, rgba(180,145,122,0.15), transparent);
+    }
+
+    .founder-initials {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 80px;
+      font-weight: 300;
+      color: var(--gold-light);
+      opacity: 0.4;
+    }
+
+    .founder-content .name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px;
+      font-weight: 400;
+      color: var(--black);
+      margin: 20px 0 4px;
+    }
+
+    .founder-content .role {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+
+    .credentials {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 32px;
+    }
+
+    .cred {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      color: var(--mid);
+    }
+
+    .cred::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--grey-dark);
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 80px;
+    }
+
+    #contact .section-title { color: var(--white); }
+    #contact .section-label { color: var(--gold-light); }
+
+    .contact-info { display: flex; flex-direction: column; gap: 32px; }
+
+    .contact-block h4 {
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .contact-block p, .contact-block a {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      line-height: 1.6;
+      transition: color 0.2s;
+    }
+
+    .contact-block a:hover { color: var(--gold-light); }
+
+    .contact-block .hours-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 4px 16px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+
+    .form-group label {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--white);
+      padding: 14px 16px;
+      font-family: 'Jost', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      outline: none;
+      transition: border-color 0.3s;
+      width: 100%;
+      appearance: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+    }
+
+    .form-group select option { background: var(--off-black); }
+
+    .form-group textarea { resize: vertical; min-height: 100px; }
+
+    .btn-submit {
+      background: var(--gold);
+      color: var(--white);
+      border: none;
+      padding: 16px 40px;
+      font-family: 'Jost', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.3s;
+      align-self: flex-start;
+    }
+
+    .btn-submit:hover { background: var(--gold-dark); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #1A2420;
+      padding: 60px 5vw 32px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 60px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      margin-bottom: 32px;
+    }
+
+    .footer-brand h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+
+    .footer-brand p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+      line-height: 1.75;
+      max-width: 320px;
+    }
+
+    .footer-col h4 {
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+
+    .footer-col a {
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover { color: var(--gold-light); }
+
+    .social-row {
+      display: flex;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .social-link {
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(255,255,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      font-size: 12px;
+      transition: all 0.2s;
+    }
+
+    .social-link:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: rgba(255,255,255,0.2);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-bottom a {
+      color: rgba(255,255,255,0.3);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-bottom a:hover { color: var(--gold); }
+
+    .footer-legal { display: flex; gap: 24px; }
+
+    /* ── ABOUT PAGE ── */
+    #about-page { display: none; }
+
+    .about-hero {
+      min-height: 50vh;
+      background: linear-gradient(160deg, #1A1715 0%, #2E2520 100%);
+      display: flex;
+      align-items: flex-end;
+      padding: 120px 5vw 60px;
+    }
+
+    .about-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 300;
+      color: var(--white);
+      max-width: 700px;
+      line-height: 1.15;
+    }
+
+    .about-hero h1 em { font-style: italic; color: var(--gold-light); }
+
+    .about-content {
+      padding: 80px 5vw;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .cred-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 80px 5vw;
+      background: var(--cream);
+    }
+
+    .cred-card {
+      background: var(--white);
+      border-left: 3px solid var(--gold);
+      padding: 28px 28px 28px 32px;
+    }
+
+    .cred-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--black);
+      margin-bottom: 8px;
+    }
+
+    .cred-card p {
+      font-size: 13px;
+      color: var(--mid);
+      line-height: 1.7;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes ticker {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 900px) {
+      #about, #founder, #contact { grid-template-columns: 1fr; gap: 40px; }
+      .serve-grid { grid-template-columns: repeat(2, 1fr); }
+      .services-grid { grid-template-columns: 1fr; }
+      .standard-grid { grid-template-columns: 1fr 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .about-content { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links, .nav-book { display: none; }
+      .hamburger { display: flex; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: var(--nav-h);
+        left: 0; right: 0;
+        background: var(--white);
+        padding: 24px 5vw 32px;
+        gap: 20px;
+        border-top: 1px solid var(--light);
+      }
+      nav.scrolled .nav-links.open a { color: var(--dark); }
+      .nav-links.open a { color: var(--dark) !important; }
+      .hero-ctas { flex-direction: column; align-items: center; }
+      .serve-grid { grid-template-columns: 1fr; }
+      .standard-grid { grid-template-columns: 1fr; }
+      .about-pills { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-legal { flex-direction: column; gap: 8px; }
+    }
+
+    /* ── NOTIFICATION ── */
+    .toast {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      background: var(--gold);
+      color: var(--white);
+      padding: 16px 24px;
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      z-index: 999;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: all 0.3s;
+      pointer-events: none;
+    }
+
+    .toast.show { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav id="nav">
+  <a href="#home" class="nav-logo">Sophisticated Signatures</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About Us</a></li>
+    <li><a href="#services">Our Services</a></li>
+    <li><a href="https://www.sophisticated-signatures.square.site/" target="_blank">Book Online</a></li>
+    <li><a href="#contact">Contact Us</a></li>
+  </ul>
+  <a href="https://www.sophisticated-signatures.square.site/" target="_blank" class="nav-book">Book a Signature</a>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div style="position:relative;z-index:1;max-width:1000px;margin:0 auto;">
+    <p class="hero-eyebrow">Jacksonville, FL · Mobile & Remote Notary</p>
+    <h1 class="hero-title">Where Every Signature is Executed with <em>Sophistication</em></h1>
+    <p class="hero-sub">Notary and Loan Signings handled with precision you can rely on, discretion you can trust, and professionalism you can feel.</p>
+    <div class="hero-ctas">
+      <a href="https://www.sophisticated-signatures.square.site/" target="_blank" class="btn-primary">Book Your Appointment</a>
+      <a href="tel:+19047408835" class="btn-outline">Speak with a Notary</a>
+    </div>
+  </div>
+  <div class="hero-divider"></div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-inner" id="tickerInner">
+    <span>Mobile Notary Services</span>
+    <span>Remote Online Notarizations</span>
+    <span>Loan Signing Specialist</span>
+    <span>Estate & Healthcare Signings</span>
+    <span>White-Glove Professional Service</span>
+    <span>Jacksonville, FL & Beyond</span>
+    <span>Florida Licensed &amp; NNA Accredited</span>
+    <span>Mobile Notary Services</span>
+    <span>Remote Online Notarizations</span>
+    <span>Loan Signing Specialist</span>
+    <span>Estate & Healthcare Signings</span>
+    <span>White-Glove Professional Service</span>
+    <span>Jacksonville, FL & Beyond</span>
+    <span>Florida Licensed &amp; NNA Accredited</span>
+  </div>
+</div>
+
+<!-- ABOUT / WHY -->
+<section id="about">
+  <div class="reveal">
+    <p class="section-label">Why Sophisticated Signatures</p>
+    <h2 class="section-title">We Do More Than Notarize — We Protect What Matters</h2>
+    <p class="section-body">At Sophisticated Signatures, we protect the integrity of life's most significant transactions. From estate planning instruments to complex real estate closings, every execution is conducted with precision, strict compliance, and an uncompromising standard of refined service.</p>
+    <div class="about-pills">
+      <div class="pill">Mobile & Office Appointments</div>
+      <div class="pill">Remote Online Notary</div>
+      <div class="pill">Estate & Healthcare Visits</div>
+      <div class="pill">White-Glove Loan Signing</div>
+    </div>
+  </div>
+  <div class="about-visual reveal">
+    <div class="quote-block">
+      <p>A signature is not simply ink on paper — it is a legally binding act that carries consequence, authority, and permanence.</p>
+      <cite>— Sophisticated Signatures</cite>
+    </div>
+    <div class="about-accent">
+      <div class="accent-stat">
+        <span class="num">RON</span>
+        <span class="lbl">Certified</span>
+      </div>
+      <div class="accent-stat" style="background:var(--grey-dark);">
+        <span class="num">NNA</span>
+        <span class="lbl">Accredited</span>
+      </div>
+      <div class="accent-stat" style="background:var(--gold-dark);">
+        <span class="num">FL</span>
+        <span class="lbl">Licensed</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE SERVE -->
+<section id="serve">
+  <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 0;">
+    <p class="section-label">Who We Serve</p>
+    <h2 class="section-title">Distinguished Clients & Institutions</h2>
+  </div>
+  <div class="serve-grid reveal">
+    <div class="serve-card">
+      <div class="serve-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22"><path d="M12 2L2 7h2v13h16V7h2L12 2zM10 15v-4h4v4h-4z"/></svg>
+      </div>
+      <h3>Estate Planning Attorneys</h3>
+      <p>Meticulous support for complex trusts, wills, and sensitive estate settlements with absolute discretion.</p>
+    </div>
+    <div class="serve-card">
+      <div class="serve-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22"><path d="M19 3H5c-1.1 0-2 .9-2 2v14l4-4h12c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>
+      </div>
+      <h3>Healthcare Facilities</h3>
+      <p>Compassionate mobile notarial services for urgent healthcare directives, POAs, and medical authorizations.</p>
+    </div>
+    <div class="serve-card">
+      <div class="serve-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+      </div>
+      <h3>Real Estate Professionals</h3>
+      <p>Expert loan signings and document authentication for high-end residential and commercial transactions.</p>
+    </div>
+    <div class="serve-card">
+      <div class="serve-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z"/></svg>
+      </div>
+      <h3>Title & Escrow Companies</h3>
+      <p>Reliable white-glove support ensuring every document is flawlessly executed and returned without delay.</p>
+    </div>
+    <div class="serve-card">
+      <div class="serve-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22"><path d="M20 6h-2.18c.07-.44.18-.86.18-1 0-2.21-1.79-4-4-4s-4 1.79-4 4c0 .14.11.56.18 1H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6-3c1.1 0 2 .9 2 2 0 .14-.11.56-.18 1h-3.64C12.11 5.56 12 5.14 12 5c0-1.1.9-2 2-2z"/></svg>
+      </div>
+      <h3>Business Owners & Executives</h3>
+      <p>Strategic corporate services for oaths, notarizations, and critical banking documents executed with discretion.</p>
+    </div>
+    <div class="serve-card">
+      <div class="serve-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+      </div>
+      <h3>Private Clients</h3>
+      <p>Discreet concierge mobile services for individuals requiring secure document authentication on their timeline.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="reveal">
+    <p class="section-label">What We Offer</p>
+    <h2 class="section-title">Our Services</h2>
+    <p class="section-body">Each service is delivered with the same uncompromising standard — flawless execution, strict legal compliance, and white-glove professionalism.</p>
+  </div>
+  <div class="services-grid reveal">
+    <div class="svc-card">
+      <div class="svc-num">01</div>
+      <h3>General Notary Services</h3>
+      <p>Professional notarization of affidavits, powers of attorney, acknowledgments, jurats, and other legal documents. Available in-office or mobile by appointment.</p>
+    </div>
+    <div class="svc-card">
+      <div class="svc-num">02</div>
+      <h3>Loan Signing Services</h3>
+      <p>White-glove real estate closing support for buyers, sellers, and refinances. We work directly with title companies and lenders for error-free signings.</p>
+      <ul class="svc-list">
+        <li>Buyer & Seller Packages</li>
+        <li>Refinances &amp; HELOCs</li>
+        <li>Reverse Mortgages</li>
+      </ul>
+    </div>
+    <div class="svc-card">
+      <div class="svc-num">03</div>
+      <h3>Remote Online Notary (RON)</h3>
+      <p>Secure, compliant Remote Online Notarizations via approved digital platforms with robust identity verification and encrypted audio-visual recording.</p>
+      <ul class="svc-list">
+        <li>Busy Professionals</li>
+        <li>Out-of-State Signers</li>
+        <li>Urgent Legal Documents</li>
+      </ul>
+    </div>
+    <div class="svc-card">
+      <div class="svc-num">04</div>
+      <h3>Healthcare & Estate Signings</h3>
+      <p>Direct coordination with nursing homes, assisted living facilities, and hospitals. Discreet, patient-centered service with scheduling flexibility.</p>
+      <ul class="svc-list">
+        <li>Wills &amp; Trust Documents</li>
+        <li>Durable Powers of Attorney</li>
+        <li>Medical Directives</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- OUR STANDARD -->
+<section id="standard">
+  <p class="section-label">Our Standard</p>
+  <h2 class="section-title reveal">Sophisticated Signatures Was Built on One Principle</h2>
+  <p class="section-body reveal">We are a premier notary and loan signing service providing in-office, mobile, and remote notarizations throughout the Jacksonville area and beyond. Our approach combines legal precision with executive-level service.</p>
+  <div class="standard-grid reveal">
+    <div class="std-item">
+      <div class="std-dot"></div>
+      <h4>Discretion</h4>
+      <p>Every appointment is handled with absolute confidentiality. Sensitive matters are treated with the privacy they deserve.</p>
+    </div>
+    <div class="std-item">
+      <div class="std-dot"></div>
+      <h4>Accuracy</h4>
+      <p>Every document reviewed with disciplined attention. No rushing. No oversight. No compromise on procedural compliance.</p>
+    </div>
+    <div class="std-item">
+      <div class="std-dot"></div>
+      <h4>Sophistication</h4>
+      <p>Executive-level service from first contact to final signature. We elevate every notarial interaction.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LUXURY BAND -->
+<div class="luxury-band">
+  <p class="eyebrow">The Luxury Standard</p>
+  <h2>Sophisticated Signatures redefines the notarial experience through a lens of <em>exclusivity and artisanal precision</em></h2>
+</div>
+
+<!-- FOUNDERS -->
+<section id="founder" style="background:var(--white); padding: 100px 5vw;">
+  <div style="text-align:center; margin-bottom: 60px;" class="reveal">
+    <p class="section-label">Meet the Founders</p>
+    <h2 class="section-title">The Leadership Behind Every Signature</h2>
+  </div>
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1100px; margin: 0 auto;">
+
+    <!-- Danielle -->
+    <div style="display:grid; grid-template-columns: 160px 1fr; gap: 32px; align-items: start; background: var(--cream); padding: 40px;" class="reveal">
+      <div class="founder-img-wrap" style="aspect-ratio:3/4; min-height: 200px;">
+        <div class="founder-initials">DA</div>
+      </div>
+      <div class="founder-content">
+        <p class="section-label" style="margin-bottom:8px;">Co-Founder</p>
+        <h3 class="name" style="font-size:26px; margin-bottom:4px;">Danielle Allen</h3>
+        <p class="role" style="margin-bottom:16px;">Certified Notary · NNA-Accredited Signing Agent</p>
+        <p style="font-size:13px; color:var(--mid); line-height:1.75;">With a keen eye for detail and a commitment to accuracy, Danielle guides clients through every document — ensuring all signatures, initials, and notarizations are completed flawlessly. She offers flexible mobile and remote services designed to fit your schedule with the utmost discretion and professionalism.</p>
+        <div class="credentials" style="margin-top:20px;">
+          <div class="cred">Certified Notary Public — State of Florida</div>
+          <div class="cred">NNA-Accredited Loan Signing Agent</div>
+          <div class="cred">RON Remote Online Notarization Specialist</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Nathaniel -->
+    <div style="display:grid; grid-template-columns: 160px 1fr; gap: 32px; align-items: start; background: var(--cream); padding: 40px;" class="reveal">
+      <div class="founder-img-wrap" style="aspect-ratio:3/4; min-height: 200px;">
+        <div class="founder-initials">ND</div>
+      </div>
+      <div class="founder-content">
+        <p class="section-label" style="margin-bottom:8px;">Co-Founder</p>
+        <h3 class="name" style="font-size:26px; margin-bottom:4px;">Nathaniel Davis</h3>
+        <p class="role" style="margin-bottom:16px;">Co-Founder · Operations & Client Relations</p>
+        <p style="font-size:13px; color:var(--mid); line-height:1.75;">Nathaniel brings executive-level leadership to Sophisticated Signatures, overseeing operations and client relations with a focus on delivering a seamless, refined experience. His commitment to precision and white-glove service ensures every client interaction reflects the Sophisticated Signatures standard.</p>
+        <div class="credentials" style="margin-top:20px;">
+          <div class="cred">Co-Founder & Operations Director</div>
+          <div class="cred">Client Relations & Business Development</div>
+          <div class="cred">Compliance & Service Standards</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-info reveal">
+    <div>
+      <p class="section-label">Get In Touch</p>
+      <h2 class="section-title">Contact Us</h2>
+    </div>
+    <div class="contact-block">
+      <h4>Executive Office</h4>
+      <p>301 W Bay Street<br>Suite 14167<br>Jacksonville, FL 32202</p>
+    </div>
+    <div class="contact-block">
+      <h4>Direct Line</h4>
+      <a href="tel:+19047408835">+1 (904) 740-8835</a>
+    </div>
+    <div class="contact-block">
+      <h4>Secure Digital Inquiries</h4>
+      <a href="mailto:ContactUs@sophisticatedsignatures.com">ContactUs@sophisticatedsignatures.com</a>
+    </div>
+    <div class="contact-block">
+      <h4>Office Hours</h4>
+      <div class="hours-grid">
+        <span>Monday — Friday</span><span>9:00 AM – 6:00 PM</span>
+        <span style="grid-column:1/-1;color:rgba(255,255,255,0.3);font-size:12px;">Weekend Priority Mobile Notary by Appointment</span>
+      </div>
+    </div>
+  </div>
+  <div class="contact-form reveal">
+    <form id="contactForm" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="fname">First Name</label>
+          <input type="text" id="fname" name="fname" placeholder="Danielle" required />
+        </div>
+        <div class="form-group">
+          <label for="lname">Last Name</label>
+          <input type="text" id="lname" name="lname" placeholder="Allen" required />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="your@email.com" required />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" name="phone" placeholder="(904) 000-0000" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="service">Type of Service Needed</label>
+        <select id="service" name="service">
+          <option value="">Select a service…</option>
+          <option>General Notary Services</option>
+          <option>Loan Signing Services</option>
+          <option>Remote Online Notarization (RON)</option>
+          <option>Healthcare / Estate Signing</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="datetime">Preferred Date &amp; Time</label>
+        <input type="datetime-local" id="datetime" name="datetime" />
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Tell us about your signing needs…"></textarea>
+      </div>
+      <button type="submit" class="btn-submit">Send Inquiry</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <h3>Sophisticated Signatures</h3>
+      <p>When accuracy is critical and professionalism is non-negotiable, Sophisticated Signatures stands as your trusted notarial partner — delivering precise document execution and a refined client experience.</p>
+      <div class="social-row">
+        <a href="https://www.facebook.com" target="_blank" class="social-link" aria-label="Facebook">f</a>
+        <a href="https://www.instagram.com" target="_blank" class="social-link" aria-label="Instagram">ig</a>
+        <a href="https://www.linkedin.com" target="_blank" class="social-link" aria-label="LinkedIn">in</a>
+        <a href="https://www.tiktok.com" target="_blank" class="social-link" aria-label="TikTok">tt</a>
+        <a href="https://www.youtube.com" target="_blank" class="social-link" aria-label="YouTube">yt</a>
+        <a href="https://www.x.com" target="_blank" class="social-link" aria-label="X / Twitter">𝕏</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#services">Our Services</a></li>
+        <li><a href="https://www.sophisticated-signatures.square.site/" target="_blank">Book Online</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">General Notary</a></li>
+        <li><a href="#services">Loan Signings</a></li>
+        <li><a href="#services">Remote Online Notary</a></li>
+        <li><a href="#services">Healthcare &amp; Estate</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Sophisticated Signatures. Licensed Mobile &amp; Digital Notary.</span>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+    </div>
+  </div>
+</footer>
+
+<!-- TOAST -->
+<div class="toast" id="toast">Message sent — we'll be in touch shortly.</div>
+
+<script>
+  // Nav scroll effect
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+
+  // Mobile menu
+  function toggleMenu() {
+    const links = document.getElementById('navLinks');
+    links.classList.toggle('open');
+  }
+
+  // Close menu on link click
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+      document.getElementById('navLinks').classList.remove('open');
+    });
+  });
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Form submission
+  function handleSubmit(e) {
+    e.preventDefault();
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 4000);
+    e.target.reset();
+  }
+</script>
+</body>
+</html>

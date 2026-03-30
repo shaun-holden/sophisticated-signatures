@@ -971,6 +971,209 @@
       .footer-legal { flex-direction: column; gap: 8px; }
     }
 
+    /* ── BOOKING ── */
+    #booking {
+      background: var(--cream);
+      padding: 100px 5vw;
+    }
+
+    .booking-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 80px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .booking-steps { counter-reset: step; }
+
+    .booking-step {
+      margin-bottom: 32px;
+    }
+
+    .booking-step h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--black);
+      margin-bottom: 12px;
+    }
+
+    .booking-step h3::before {
+      counter-increment: step;
+      content: counter(step) '. ';
+      color: var(--gold);
+    }
+
+    .service-options, .location-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .service-option, .location-option {
+      padding: 14px 16px;
+      background: var(--white);
+      border: 1px solid #e0e0e0;
+      cursor: pointer;
+      font-size: 13px;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .service-option:hover, .location-option:hover { border-color: var(--gold); }
+    .service-option.selected, .location-option.selected {
+      border-color: var(--gold);
+      background: rgba(201,160,152,0.08);
+    }
+
+    .service-option input, .location-option input { display: none; }
+
+    .radio-dot {
+      width: 16px; height: 16px;
+      border: 2px solid #ccc;
+      border-radius: 50%;
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    .selected .radio-dot {
+      border-color: var(--gold);
+    }
+
+    .selected .radio-dot::after {
+      content: '';
+      position: absolute;
+      top: 3px; left: 3px;
+      width: 6px; height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+    }
+
+    .date-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+      margin-bottom: 16px;
+    }
+
+    .date-cell {
+      text-align: center;
+      padding: 10px 4px;
+      font-size: 13px;
+      cursor: pointer;
+      background: var(--white);
+      border: 1px solid #e8e8e8;
+      transition: all 0.2s;
+    }
+
+    .date-cell:hover { border-color: var(--gold); }
+    .date-cell.selected { background: var(--gold); color: var(--white); border-color: var(--gold); }
+    .date-cell.unavailable { opacity: 0.3; cursor: default; pointer-events: none; }
+    .date-cell.day-label { background: none; border: none; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid); cursor: default; pointer-events: none; }
+
+    .cal-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+    .cal-nav button { background: none; border: 1px solid #ddd; padding: 6px 14px; cursor: pointer; font-family: 'Jost', sans-serif; font-size: 12px; }
+    .cal-nav span { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: var(--black); }
+
+    .time-slots {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .time-slot {
+      text-align: center;
+      padding: 10px;
+      font-size: 13px;
+      background: var(--white);
+      border: 1px solid #e0e0e0;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .time-slot:hover { border-color: var(--gold); }
+    .time-slot.selected { background: var(--gold); color: var(--white); border-color: var(--gold); }
+
+    .booking-form-fields { display: flex; flex-direction: column; gap: 12px; }
+
+    .booking-form-fields label {
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--mid);
+    }
+
+    .booking-form-fields input,
+    .booking-form-fields textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #ddd;
+      font-family: 'Jost', sans-serif;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .booking-form-fields input:focus,
+    .booking-form-fields textarea:focus { border-color: var(--gold); }
+
+    .booking-form-fields textarea { resize: vertical; min-height: 80px; }
+
+    .booking-form-fields .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .booking-submit {
+      background: var(--gold);
+      color: var(--white);
+      border: none;
+      padding: 16px 40px;
+      font-family: 'Jost', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-top: 12px;
+    }
+
+    .booking-submit:hover { background: var(--gold-dark); }
+    .booking-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .booking-confirmation {
+      display: none;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .booking-confirmation h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 400;
+      color: var(--black);
+      margin-bottom: 12px;
+    }
+
+    .booking-confirmation p {
+      font-size: 14px;
+      color: var(--mid);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 900px) {
+      .booking-layout { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    @media (max-width: 640px) {
+      .time-slots { grid-template-columns: repeat(2, 1fr); }
+      .booking-form-fields .form-row { grid-template-columns: 1fr; }
+    }
+
     /* ── NOTIFICATION ── */
     .toast {
       position: fixed;
@@ -1002,7 +1205,7 @@
     <li><a href="#services">Our Services</a></li>
     <li><a href="#contact">Contact Us</a></li>
   </ul>
-  <a href="https://www.sophisticated-signatures.square.site/" target="_blank" class="nav-book">Book a Signature</a>
+  <a href="#booking" class="nav-book">Book a Signature</a>
   <div class="hamburger" id="hamburger" onclick="toggleMenu()">
     <span></span><span></span><span></span>
   </div>
@@ -1015,7 +1218,7 @@
     <h1 class="hero-title">Where Every Signature is Executed with <em>Sophistication</em></h1>
     <p class="hero-sub">Notary and Loan Signings handled with precision you can rely on, discretion you can trust, and professionalism you can feel.</p>
     <div class="hero-ctas">
-      <a href="https://www.sophisticated-signatures.square.site/" target="_blank" class="btn-primary">Book Your Appointment</a>
+      <a href="#booking" class="btn-primary">Book Your Appointment</a>
       <a href="tel:+19047408835" class="btn-outline">Speak with a Notary</a>
     </div>
   </div>
@@ -1242,6 +1445,123 @@
   </div>
 </section>
 
+<!-- BOOKING -->
+<section id="booking">
+  <div class="booking-layout">
+    <div class="reveal">
+      <p class="section-label">Schedule an Appointment</p>
+      <h2 class="section-title">Book a Signature</h2>
+      <p class="section-body" style="margin-bottom:40px;">Select your service, choose your preferred location and time, and we'll take care of the rest. Confirmation will be sent to your email.</p>
+    </div>
+    <div class="reveal">
+      <div id="bookingForm">
+        <div class="booking-steps">
+          <!-- Step 1: Service -->
+          <div class="booking-step">
+            <h3>Select a Service</h3>
+            <div class="service-options" id="serviceOptions">
+              <label class="service-option" onclick="selectService(this)">
+                <input type="radio" name="service" value="General Notary Services" />
+                <span class="radio-dot"></span> General Notary Services
+              </label>
+              <label class="service-option" onclick="selectService(this)">
+                <input type="radio" name="service" value="Loan Signing Services" />
+                <span class="radio-dot"></span> Loan Signing Services
+              </label>
+              <label class="service-option" onclick="selectService(this)">
+                <input type="radio" name="service" value="Remote Online Notarization (RON)" />
+                <span class="radio-dot"></span> Remote Online Notarization (RON)
+              </label>
+              <label class="service-option" onclick="selectService(this)">
+                <input type="radio" name="service" value="Healthcare / Estate Signing" />
+                <span class="radio-dot"></span> Healthcare / Estate Signing
+              </label>
+            </div>
+          </div>
+
+          <!-- Step 2: Location -->
+          <div class="booking-step">
+            <h3>Choose Location</h3>
+            <div class="location-options" id="locationOptions">
+              <label class="location-option" onclick="selectLocation(this)">
+                <input type="radio" name="location" value="mobile" />
+                <span class="radio-dot"></span>
+                <div><strong>Come to Me</strong><br><span style="font-size:12px;color:var(--mid);">We travel to your location</span></div>
+              </label>
+              <label class="location-option" onclick="selectLocation(this)">
+                <input type="radio" name="location" value="office" />
+                <span class="radio-dot"></span>
+                <div><strong>I'll Come to You</strong><br><span style="font-size:12px;color:var(--mid);">301 W Bay St, Suite 14167, Jacksonville</span></div>
+              </label>
+              <label class="location-option" onclick="selectLocation(this)">
+                <input type="radio" name="location" value="remote" />
+                <span class="radio-dot"></span>
+                <div><strong>Remote (RON)</strong><br><span style="font-size:12px;color:var(--mid);">Secure virtual notarization session</span></div>
+              </label>
+            </div>
+            <div id="addressField" style="display:none;margin-top:12px;">
+              <label style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--mid);display:block;margin-bottom:6px;">Your Address</label>
+              <input type="text" id="clientAddress" placeholder="Enter your full address" style="width:100%;padding:12px 14px;border:1px solid #ddd;font-family:'Jost',sans-serif;font-size:14px;" />
+            </div>
+          </div>
+
+          <!-- Step 3: Date & Time -->
+          <div class="booking-step">
+            <h3>Pick a Date & Time</h3>
+            <div class="cal-nav">
+              <button onclick="prevMonth()">&larr;</button>
+              <span id="calMonth"></span>
+              <button onclick="nextMonth()">&rarr;</button>
+            </div>
+            <div class="date-grid" id="calGrid"></div>
+            <div class="time-slots" id="timeSlots">
+              <p style="grid-column:1/-1;text-align:center;color:var(--mid);font-size:13px;">Select a date to view available times</p>
+            </div>
+          </div>
+
+          <!-- Step 4: Contact Info -->
+          <div class="booking-step">
+            <h3>Your Information</h3>
+            <div class="booking-form-fields">
+              <div class="form-row">
+                <div>
+                  <label>First Name</label>
+                  <input type="text" id="bookFname" required />
+                </div>
+                <div>
+                  <label>Last Name</label>
+                  <input type="text" id="bookLname" required />
+                </div>
+              </div>
+              <div class="form-row">
+                <div>
+                  <label>Email</label>
+                  <input type="email" id="bookEmail" required />
+                </div>
+                <div>
+                  <label>Phone</label>
+                  <input type="tel" id="bookPhone" />
+                </div>
+              </div>
+              <div>
+                <label>Notes (optional)</label>
+                <textarea id="bookNotes" placeholder="Tell us about your signing needs..."></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="booking-submit" id="bookingSubmit" onclick="submitBooking()">Confirm Appointment</button>
+      </div>
+
+      <div class="booking-confirmation" id="bookingConfirmation">
+        <h3>Appointment Confirmed</h3>
+        <p>Thank you! A confirmation email has been sent with your appointment details. We look forward to serving you.</p>
+        <button class="booking-submit" style="margin-top:24px;" onclick="resetBooking()">Book Another Appointment</button>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section id="contact">
   <div class="contact-info reveal">
@@ -1401,6 +1721,178 @@
     toast.classList.add('show');
     setTimeout(() => toast.classList.remove('show'), 4000);
     e.target.reset();
+  }
+
+  // ── BOOKING SYSTEM ──
+  const BOOKING_API = 'https://ss-api.up.railway.app/api'; // Will update after deploy
+
+  let selectedService = '';
+  let selectedLocation = '';
+  let selectedDate = '';
+  let selectedTime = '';
+  let calYear, calMonth;
+
+  // Initialize calendar to current month
+  const now = new Date();
+  calYear = now.getFullYear();
+  calMonth = now.getMonth();
+  renderCalendar();
+
+  function selectService(el) {
+    document.querySelectorAll('.service-option').forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+    el.querySelector('input').checked = true;
+    selectedService = el.querySelector('input').value;
+  }
+
+  function selectLocation(el) {
+    document.querySelectorAll('.location-option').forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+    el.querySelector('input').checked = true;
+    selectedLocation = el.querySelector('input').value;
+    document.getElementById('addressField').style.display = selectedLocation === 'mobile' ? 'block' : 'none';
+  }
+
+  function renderCalendar() {
+    const grid = document.getElementById('calGrid');
+    const label = document.getElementById('calMonth');
+    const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    label.textContent = `${monthNames[calMonth]} ${calYear}`;
+
+    const dayLabels = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    let html = dayLabels.map(d => `<div class="date-cell day-label">${d}</div>`).join('');
+
+    const firstDay = new Date(calYear, calMonth, 1).getDay();
+    const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
+    const today = new Date();
+    today.setHours(0,0,0,0);
+
+    for (let i = 0; i < firstDay; i++) {
+      html += '<div class="date-cell unavailable"></div>';
+    }
+
+    for (let d = 1; d <= daysInMonth; d++) {
+      const date = new Date(calYear, calMonth, d);
+      const dateStr = `${calYear}-${String(calMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+      const isPast = date < today;
+      const sel = dateStr === selectedDate ? ' selected' : '';
+      html += `<div class="date-cell${isPast ? ' unavailable' : sel}" ${!isPast ? `onclick="pickDate('${dateStr}', this)"` : ''}>${d}</div>`;
+    }
+
+    grid.innerHTML = html;
+  }
+
+  async function pickDate(dateStr, el) {
+    selectedDate = dateStr;
+    selectedTime = '';
+    document.querySelectorAll('.date-cell:not(.day-label)').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+
+    const slotsDiv = document.getElementById('timeSlots');
+    slotsDiv.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:var(--mid);font-size:13px;">Loading available times...</p>';
+
+    try {
+      const res = await fetch(`${BOOKING_API}/availability/slots?date=${dateStr}`);
+      const data = await res.json();
+
+      if (data.slots.length === 0) {
+        slotsDiv.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:var(--mid);font-size:13px;">No available times for this date</p>';
+        return;
+      }
+
+      slotsDiv.innerHTML = data.slots.map(slot => {
+        const [h, m] = slot.split(':');
+        const hr = parseInt(h);
+        const label = `${hr % 12 || 12}:${m} ${hr >= 12 ? 'PM' : 'AM'}`;
+        return `<div class="time-slot" onclick="pickTime('${slot}', this)">${label}</div>`;
+      }).join('');
+    } catch {
+      slotsDiv.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:var(--mid);font-size:13px;">Unable to load times. Please try again.</p>';
+    }
+  }
+
+  function pickTime(time, el) {
+    selectedTime = time;
+    document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+    el.classList.add('selected');
+  }
+
+  function prevMonth() {
+    calMonth--;
+    if (calMonth < 0) { calMonth = 11; calYear--; }
+    renderCalendar();
+  }
+
+  function nextMonth() {
+    calMonth++;
+    if (calMonth > 11) { calMonth = 0; calYear++; }
+    renderCalendar();
+  }
+
+  async function submitBooking() {
+    const fname = document.getElementById('bookFname').value.trim();
+    const lname = document.getElementById('bookLname').value.trim();
+    const email = document.getElementById('bookEmail').value.trim();
+    const phone = document.getElementById('bookPhone').value.trim();
+    const notes = document.getElementById('bookNotes').value.trim();
+    const address = document.getElementById('clientAddress')?.value.trim() || '';
+
+    if (!selectedService) return alert('Please select a service');
+    if (!selectedLocation) return alert('Please choose a location');
+    if (selectedLocation === 'mobile' && !address) return alert('Please enter your address');
+    if (!selectedDate) return alert('Please pick a date');
+    if (!selectedTime) return alert('Please pick a time');
+    if (!fname || !lname || !email) return alert('Please fill in your name and email');
+
+    const btn = document.getElementById('bookingSubmit');
+    btn.disabled = true;
+    btn.textContent = 'Booking...';
+
+    try {
+      const res = await fetch(`${BOOKING_API}/bookings`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          first_name: fname, last_name: lname, email, phone,
+          service: selectedService, location_type: selectedLocation,
+          client_address: address, appointment_date: selectedDate,
+          appointment_time: selectedTime, notes
+        })
+      });
+
+      if (!res.ok) {
+        const err = await res.json();
+        throw new Error(err.error || 'Booking failed');
+      }
+
+      document.getElementById('bookingForm').style.display = 'none';
+      document.getElementById('bookingConfirmation').style.display = 'block';
+    } catch (err) {
+      alert(err.message || 'Something went wrong. Please try again.');
+      btn.disabled = false;
+      btn.textContent = 'Confirm Appointment';
+    }
+  }
+
+  function resetBooking() {
+    selectedService = ''; selectedLocation = ''; selectedDate = ''; selectedTime = '';
+    document.querySelectorAll('.service-option, .location-option').forEach(o => o.classList.remove('selected'));
+    document.getElementById('addressField').style.display = 'none';
+    document.getElementById('bookFname').value = '';
+    document.getElementById('bookLname').value = '';
+    document.getElementById('bookEmail').value = '';
+    document.getElementById('bookPhone').value = '';
+    document.getElementById('bookNotes').value = '';
+    document.getElementById('clientAddress').value = '';
+    document.getElementById('timeSlots').innerHTML = '<p style="grid-column:1/-1;text-align:center;color:var(--mid);font-size:13px;">Select a date to view available times</p>';
+    calYear = new Date().getFullYear();
+    calMonth = new Date().getMonth();
+    renderCalendar();
+    document.getElementById('bookingForm').style.display = 'block';
+    document.getElementById('bookingConfirmation').style.display = 'none';
+    const btn = document.getElementById('bookingSubmit');
+    btn.disabled = false;
+    btn.textContent = 'Confirm Appointment';
   }
 </script>
 </body>

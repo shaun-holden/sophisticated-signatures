@@ -587,9 +587,14 @@
     /* ── FOUNDER ── */
     #founder {
       background: var(--white);
+    }
+
+    .founders-layout {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 80px;
+      gap: 60px;
+      max-width: 1100px;
+      margin: 0 auto;
       align-items: center;
     }
 
@@ -598,25 +603,21 @@
       aspect-ratio: 3/4;
       background: var(--cream);
       overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    }
+
+    .founder-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
     }
 
     .founder-img-wrap::after {
       content: '';
       position: absolute;
       bottom: 0; left: 0; right: 0;
-      height: 40%;
-      background: linear-gradient(to top, rgba(180,145,122,0.15), transparent);
-    }
-
-    .founder-initials {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 80px;
-      font-weight: 300;
-      color: var(--gold-light);
-      opacity: 0.4;
+      height: 30%;
+      background: linear-gradient(to top, rgba(13,42,29,0.2), transparent);
     }
 
     .founder-content .name {
@@ -936,7 +937,8 @@
 
     /* ── MOBILE ── */
     @media (max-width: 900px) {
-      #about, #founder, #contact { grid-template-columns: 1fr; gap: 40px; }
+      #about, #contact { grid-template-columns: 1fr; gap: 40px; }
+      .founders-layout { grid-template-columns: 1fr; gap: 40px; }
       .serve-grid { grid-template-columns: repeat(2, 1fr); }
       .services-grid { grid-template-columns: 1fr; }
       .standard-grid { grid-template-columns: 1fr 1fr; }
@@ -998,7 +1000,6 @@
     <li><a href="#home">Home</a></li>
     <li><a href="#about">About Us</a></li>
     <li><a href="#services">Our Services</a></li>
-    <li><a href="https://www.sophisticated-signatures.square.site/" target="_blank">Book Online</a></li>
     <li><a href="#contact">Contact Us</a></li>
   </ul>
   <a href="https://www.sophisticated-signatures.square.site/" target="_blank" class="nav-book">Book a Signature</a>
@@ -1210,44 +1211,34 @@
     <p class="section-label">Meet the Founders</p>
     <h2 class="section-title">The Leadership Behind Every Signature</h2>
   </div>
-  <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1100px; margin: 0 auto;">
-
-    <!-- Danielle -->
-    <div style="display:grid; grid-template-columns: 160px 1fr; gap: 32px; align-items: start; background: var(--cream); padding: 40px;" class="reveal">
-      <div class="founder-img-wrap" style="aspect-ratio:3/4; min-height: 200px;">
-        <div class="founder-initials">DA</div>
-      </div>
-      <div class="founder-content">
+  <div class="founders-layout reveal">
+    <div class="founder-img-wrap">
+      <img src="images/founders.png" alt="Danielle Allen and Nathaniel Davis — Co-Founders of Sophisticated Signatures" />
+    </div>
+    <div>
+      <div style="margin-bottom: 40px;">
         <p class="section-label" style="margin-bottom:8px;">Co-Founder</p>
-        <h3 class="name" style="font-size:26px; margin-bottom:4px;">Danielle Allen</h3>
-        <p class="role" style="margin-bottom:16px;">Certified Notary · NNA-Accredited Signing Agent</p>
+        <h3 class="founder-content name" style="font-size:28px; margin:0 0 4px;">Danielle Allen</h3>
+        <p class="founder-content role" style="margin-bottom:16px;">Certified Notary · NNA-Accredited Signing Agent</p>
         <p style="font-size:13px; color:var(--mid); line-height:1.75;">With a keen eye for detail and a commitment to accuracy, Danielle guides clients through every document — ensuring all signatures, initials, and notarizations are completed flawlessly. She offers flexible mobile and remote services designed to fit your schedule with the utmost discretion and professionalism.</p>
-        <div class="credentials" style="margin-top:20px;">
+        <div class="credentials" style="margin-top:16px;">
           <div class="cred">Certified Notary Public — State of Florida</div>
           <div class="cred">NNA-Accredited Loan Signing Agent</div>
           <div class="cred">RON Remote Online Notarization Specialist</div>
         </div>
       </div>
-    </div>
-
-    <!-- Nathaniel -->
-    <div style="display:grid; grid-template-columns: 160px 1fr; gap: 32px; align-items: start; background: var(--cream); padding: 40px;" class="reveal">
-      <div class="founder-img-wrap" style="aspect-ratio:3/4; min-height: 200px;">
-        <div class="founder-initials">ND</div>
-      </div>
-      <div class="founder-content">
+      <div style="border-top: 1px solid var(--light); padding-top: 32px;">
         <p class="section-label" style="margin-bottom:8px;">Co-Founder</p>
-        <h3 class="name" style="font-size:26px; margin-bottom:4px;">Nathaniel Davis</h3>
-        <p class="role" style="margin-bottom:16px;">Co-Founder · Operations & Client Relations</p>
+        <h3 class="founder-content name" style="font-size:28px; margin:0 0 4px;">Nathaniel Davis</h3>
+        <p class="founder-content role" style="margin-bottom:16px;">Operations & Client Relations</p>
         <p style="font-size:13px; color:var(--mid); line-height:1.75;">Nathaniel brings executive-level leadership to Sophisticated Signatures, overseeing operations and client relations with a focus on delivering a seamless, refined experience. His commitment to precision and white-glove service ensures every client interaction reflects the Sophisticated Signatures standard.</p>
-        <div class="credentials" style="margin-top:20px;">
+        <div class="credentials" style="margin-top:16px;">
           <div class="cred">Co-Founder & Operations Director</div>
           <div class="cred">Client Relations & Business Development</div>
           <div class="cred">Compliance & Service Standards</div>
         </div>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -1345,7 +1336,6 @@
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About Us</a></li>
         <li><a href="#services">Our Services</a></li>
-        <li><a href="https://www.sophisticated-signatures.square.site/" target="_blank">Book Online</a></li>
         <li><a href="#contact">Contact Us</a></li>
       </ul>
     </div>

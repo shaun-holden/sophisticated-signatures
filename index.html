@@ -1145,6 +1145,160 @@
     .booking-submit:hover { background: var(--gold-dark); }
     .booking-submit:disabled { opacity: 0.5; cursor: not-allowed; }
 
+    /* Pricing & Add-ons */
+    .service-option .price, .location-option .price {
+      margin-left: auto;
+      font-weight: 500;
+      color: var(--gold-dark);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .sub-services {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 8px;
+      padding-left: 26px;
+    }
+
+    .sub-services.show { display: flex; }
+
+    .sub-service {
+      padding: 10px 14px;
+      background: var(--white);
+      border: 1px solid #e8e8e8;
+      cursor: pointer;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s;
+    }
+
+    .sub-service:hover { border-color: var(--gold); }
+    .sub-service.selected { border-color: var(--gold); background: rgba(201,160,152,0.08); }
+
+    .addon-group {
+      margin-top: 12px;
+    }
+
+    .addon-group h4 {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 8px;
+    }
+
+    .addon-options {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .addon-option {
+      padding: 10px 14px;
+      background: var(--white);
+      border: 1px solid #e8e8e8;
+      cursor: pointer;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s;
+    }
+
+    .addon-option:hover { border-color: var(--gold); }
+    .addon-option.selected { border-color: var(--gold); background: rgba(201,160,152,0.08); }
+
+    .addon-option .price { margin-left: auto; font-weight: 500; color: var(--gold-dark); font-size: 12px; white-space: nowrap; }
+
+    .checkbox-box {
+      width: 16px; height: 16px;
+      border: 2px solid #ccc;
+      flex-shrink: 0;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .addon-option.selected .checkbox-box {
+      border-color: var(--gold);
+      background: var(--gold);
+    }
+
+    .addon-option.selected .checkbox-box::after {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--white);
+      border-radius: 1px;
+    }
+
+    /* Order Summary */
+    .order-summary {
+      background: var(--emerald-deep);
+      padding: 24px;
+      margin-top: 24px;
+      position: sticky;
+      top: 100px;
+    }
+
+    .order-summary h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .order-items {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .order-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .order-item .item-price { color: rgba(255,255,255,0.8); font-weight: 400; }
+
+    .order-total {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      font-size: 15px;
+      color: var(--white);
+      font-weight: 500;
+    }
+
+    .order-total .total-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      color: var(--gold-light);
+    }
+
+    .order-empty {
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+      font-style: italic;
+    }
+
+    /* Square Payment */
+    #card-container {
+      margin-top: 12px;
+      min-height: 90px;
+    }
+
     .booking-confirmation {
       display: none;
       text-align: center;
@@ -1448,45 +1602,218 @@
 <!-- BOOKING -->
 <section id="booking">
   <div class="booking-layout">
-    <div class="reveal">
-      <p class="section-label">Schedule an Appointment</p>
-      <h2 class="section-title">Book a Signature</h2>
-      <p class="section-body" style="margin-bottom:40px;">Select your service, choose your preferred location and time, and we'll take care of the rest. Confirmation will be sent to your email.</p>
+    <div>
+      <div class="reveal">
+        <p class="section-label">Schedule an Appointment</p>
+        <h2 class="section-title">Book a Signature</h2>
+        <p class="section-body" style="margin-bottom:40px;">Select your service, choose your preferred location and time, and we'll take care of the rest. Confirmation will be sent to your email.</p>
+      </div>
+      <!-- Order Summary (sticky sidebar on desktop) -->
+      <div class="order-summary reveal" id="orderSummary">
+        <h3>Your Appointment</h3>
+        <div class="order-items" id="orderItems">
+          <p class="order-empty">Select a service to begin</p>
+        </div>
+        <div class="order-total" id="orderTotal" style="display:none;">
+          <span>Total</span>
+          <span class="total-price" id="totalPrice">$0</span>
+        </div>
+      </div>
     </div>
     <div class="reveal">
       <div id="bookingForm">
         <div class="booking-steps">
-          <!-- Step 1: Service -->
+          <!-- Step 1: Service Category -->
           <div class="booking-step">
             <h3>Select a Service</h3>
             <div class="service-options" id="serviceOptions">
-              <label class="service-option" onclick="selectService(this)">
-                <input type="radio" name="service" value="General Notary Services" />
-                <span class="radio-dot"></span> General Notary Services
+
+              <!-- General Notary -->
+              <label class="service-option" onclick="selectCategory(this, 'general')">
+                <input type="radio" name="service-cat" value="general" />
+                <span class="radio-dot"></span>
+                <span>Signature Concierge (General Notary)</span>
+                <span class="price">from $125</span>
               </label>
-              <label class="service-option" onclick="selectService(this)">
-                <input type="radio" name="service" value="Loan Signing Services" />
-                <span class="radio-dot"></span> Loan Signing Services
+              <div class="sub-services" id="sub-general">
+                <label class="sub-service" onclick="selectSubService(event, this, 'Executive Service Call', 125)">
+                  <span class="radio-dot"></span> Executive Service Call <span class="price">$125</span>
+                </label>
+              </div>
+
+              <!-- Estate & Legal -->
+              <label class="service-option" onclick="selectCategory(this, 'estate')">
+                <input type="radio" name="service-cat" value="estate" />
+                <span class="radio-dot"></span>
+                <span>Estate & Legal Signing</span>
+                <span class="price">from $150</span>
               </label>
-              <label class="service-option" onclick="selectService(this)">
-                <input type="radio" name="service" value="Remote Online Notarization (RON)" />
-                <span class="radio-dot"></span> Remote Online Notarization (RON)
+              <div class="sub-services" id="sub-estate">
+                <label class="sub-service" onclick="selectSubService(event, this, 'Estate Planning Signing (Wills, POA, Directives)', 175)">
+                  <span class="radio-dot"></span> Estate Planning (Wills, POA, Directives) <span class="price">$175</span>
+                </label>
+                <label class="sub-service" onclick="selectSubService(event, this, 'Attorney Office Signing', 150)">
+                  <span class="radio-dot"></span> Attorney Office Signing <span class="price">$150</span>
+                </label>
+              </div>
+
+              <!-- Loan Signing -->
+              <label class="service-option" onclick="selectCategory(this, 'loan')">
+                <input type="radio" name="service-cat" value="loan" />
+                <span class="radio-dot"></span>
+                <span>Loan Signing</span>
+                <span class="price">from $175</span>
               </label>
-              <label class="service-option" onclick="selectService(this)">
-                <input type="radio" name="service" value="Healthcare / Estate Signing" />
-                <span class="radio-dot"></span> Healthcare / Estate Signing
+              <div class="sub-services" id="sub-loan">
+                <label class="sub-service" onclick="selectSubService(event, this, 'Refinance', 200)">
+                  <span class="radio-dot"></span> Refinance <span class="price">$200</span>
+                </label>
+                <label class="sub-service" onclick="selectSubService(event, this, 'Purchase', 225)">
+                  <span class="radio-dot"></span> Purchase <span class="price">$225</span>
+                </label>
+                <label class="sub-service" onclick="selectSubService(event, this, 'Seller Package', 175)">
+                  <span class="radio-dot"></span> Seller Package <span class="price">$175</span>
+                </label>
+                <label class="sub-service" onclick="selectSubService(event, this, 'HELOC', 175)">
+                  <span class="radio-dot"></span> HELOC <span class="price">$175</span>
+                </label>
+                <label class="sub-service" onclick="selectSubService(event, this, 'Reverse Mortgage', 325)">
+                  <span class="radio-dot"></span> Reverse Mortgage <span class="price">$325</span>
+                </label>
+                <label class="sub-service" onclick="selectSubService(event, this, 'Half-Day Corporate Closing', 850)">
+                  <span class="radio-dot"></span> Half-Day Corporate Closing <span class="price">$850</span>
+                </label>
+                <label class="sub-service" onclick="selectSubService(event, this, 'Full Day Corporate Closing', 1650)">
+                  <span class="radio-dot"></span> Full Day Corporate Closing <span class="price">$1,650</span>
+                </label>
+              </div>
+
+              <!-- Apostille -->
+              <label class="service-option" onclick="selectCategory(this, 'apostille')">
+                <input type="radio" name="service-cat" value="apostille" />
+                <span class="radio-dot"></span>
+                <span>Apostille Concierge</span>
+                <span class="price">from $275</span>
               </label>
+              <div class="sub-services" id="sub-apostille">
+                <label class="sub-service" onclick="selectSubService(event, this, 'Standard Apostille Processing', 275)">
+                  <span class="radio-dot"></span> Standard Processing <span class="price">$275</span>
+                </label>
+                <label class="sub-service" onclick="selectSubService(event, this, 'Expedited Apostille', 395)">
+                  <span class="radio-dot"></span> Expedited <span class="price">$395</span>
+                </label>
+                <label class="sub-service" onclick="selectSubService(event, this, 'Priority 48-Hour Processing', 495)">
+                  <span class="radio-dot"></span> Priority 48-Hour <span class="price">$495</span>
+                </label>
+                <label class="sub-service" onclick="selectSubService(event, this, 'Federal / Embassy Legalization', 650)">
+                  <span class="radio-dot"></span> Federal / Embassy Legalization <span class="price">$650</span>
+                </label>
+                <label class="sub-service" onclick="selectSubService(event, this, 'Notarization + Apostille Package', 325)">
+                  <span class="radio-dot"></span> Notarization + Apostille Package <span class="price">$325</span>
+                </label>
+              </div>
+
+              <!-- RON -->
+              <label class="service-option" onclick="selectCategory(this, 'ron')">
+                <input type="radio" name="service-cat" value="ron" />
+                <span class="radio-dot"></span>
+                <span>Remote Online Notary (RON)</span>
+                <span class="price">from $35</span>
+              </label>
+              <div class="sub-services" id="sub-ron">
+                <label class="sub-service" onclick="selectSubService(event, this, 'RON — Single Document', 35)">
+                  <span class="radio-dot"></span> Single Document <span class="price">$35</span>
+                </label>
+                <label class="sub-service" onclick="selectSubService(event, this, 'RON — Urgent', 75)">
+                  <span class="radio-dot"></span> Urgent RON <span class="price">$75</span>
+                </label>
+              </div>
+
             </div>
           </div>
 
-          <!-- Step 2: Location -->
+          <!-- Step 2: Add-ons -->
+          <div class="booking-step">
+            <h3>Add-Ons (Optional)</h3>
+
+            <div class="addon-group" id="addonGeneral">
+              <h4>Additional Services</h4>
+              <div class="addon-options">
+                <label class="addon-option" onclick="toggleAddon(this, 'Additional Notarial Seal', 10)">
+                  <span class="checkbox-box"></span> Additional Notarial Seal <span class="price">+$10</span>
+                </label>
+                <label class="addon-option" onclick="toggleAddon(this, 'Additional Signatures', 10)">
+                  <span class="checkbox-box"></span> Additional Signatures <span class="price">+$10 each</span>
+                </label>
+                <label class="addon-option" onclick="toggleAddon(this, 'Witness Coordination', 35)">
+                  <span class="checkbox-box"></span> Witness Coordination <span class="price">+$35/witness</span>
+                </label>
+                <label class="addon-option" onclick="toggleAddon(this, 'Document Review & Setup', 35)">
+                  <span class="checkbox-box"></span> Document Review & Setup <span class="price">+$35</span>
+                </label>
+                <label class="addon-option" onclick="toggleAddon(this, 'Same-Day Printing', 35)">
+                  <span class="checkbox-box"></span> Same-Day Printing <span class="price">+$35</span>
+                </label>
+                <label class="addon-option" onclick="toggleAddon(this, 'Scanbacks', 35)">
+                  <span class="checkbox-box"></span> Scanbacks <span class="price">+$35</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="addon-group" id="addonLocation" style="display:none;">
+              <h4>Specialty Location Fees</h4>
+              <div class="addon-options">
+                <label class="addon-option" onclick="toggleAddon(this, 'Hospital / Medical Facility', 50)">
+                  <span class="checkbox-box"></span> Hospital / Medical Facility <span class="price">+$50</span>
+                </label>
+                <label class="addon-option" onclick="toggleAddon(this, 'Assisted Living / Nursing Home', 50)">
+                  <span class="checkbox-box"></span> Assisted Living / Nursing Home <span class="price">+$50</span>
+                </label>
+                <label class="addon-option" onclick="toggleAddon(this, 'Correctional Facility', 75)">
+                  <span class="checkbox-box"></span> Correctional Facility <span class="price">+$75</span>
+                </label>
+                <label class="addon-option" onclick="toggleAddon(this, 'Airport / Hotel Concierge', 100)">
+                  <span class="checkbox-box"></span> Airport / Hotel Concierge <span class="price">+$100</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="addon-group" id="addonPremium" style="display:none;">
+              <h4>Premium Closing Services</h4>
+              <div class="addon-options">
+                <label class="addon-option" onclick="toggleAddon(this, 'Evening / After Hours', 50)">
+                  <span class="checkbox-box"></span> Evening / After Hours <span class="price">+$50</span>
+                </label>
+                <label class="addon-option" onclick="toggleAddon(this, 'Weekend', 75)">
+                  <span class="checkbox-box"></span> Weekend <span class="price">+$75</span>
+                </label>
+                <label class="addon-option" onclick="toggleAddon(this, 'Last-Minute Signing (under 3 hours)', 75)">
+                  <span class="checkbox-box"></span> Last-Minute Signing (under 3 hrs) <span class="price">+$75</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="addon-group" id="addonApostille" style="display:none;">
+              <h4>Apostille Add-Ons</h4>
+              <div class="addon-options">
+                <label class="addon-option" onclick="toggleAddon(this, 'Document Retrieval', 75)">
+                  <span class="checkbox-box"></span> Document Retrieval <span class="price">+$75</span>
+                </label>
+                <label class="addon-option" onclick="toggleAddon(this, 'International Shipping Coordination', 75)">
+                  <span class="checkbox-box"></span> International Shipping Coordination <span class="price">+$75</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3: Location -->
           <div class="booking-step">
             <h3>Choose Location</h3>
             <div class="location-options" id="locationOptions">
               <label class="location-option" onclick="selectLocation(this)">
                 <input type="radio" name="location" value="mobile" />
                 <span class="radio-dot"></span>
-                <div><strong>Come to Me</strong><br><span style="font-size:12px;color:var(--mid);">We travel to your location</span></div>
+                <div><strong>Come to Me</strong><br><span style="font-size:12px;color:var(--mid);">We travel to your location (free within 15 mi, then $3/mi)</span></div>
               </label>
               <label class="location-option" onclick="selectLocation(this)">
                 <input type="radio" name="location" value="office" />
@@ -1505,13 +1832,13 @@
             </div>
           </div>
 
-          <!-- Step 3: Date & Time -->
+          <!-- Step 4: Date & Time -->
           <div class="booking-step">
             <h3>Pick a Date & Time</h3>
             <div class="cal-nav">
-              <button onclick="prevMonth()">&larr;</button>
+              <button type="button" onclick="prevMonth()">&larr;</button>
               <span id="calMonth"></span>
-              <button onclick="nextMonth()">&rarr;</button>
+              <button type="button" onclick="nextMonth()">&rarr;</button>
             </div>
             <div class="date-grid" id="calGrid"></div>
             <div class="time-slots" id="timeSlots">
@@ -1519,9 +1846,9 @@
             </div>
           </div>
 
-          <!-- Step 4: Contact Info -->
+          <!-- Step 5: Contact Info & Payment -->
           <div class="booking-step">
-            <h3>Your Information</h3>
+            <h3>Your Information & Payment</h3>
             <div class="booking-form-fields">
               <div class="form-row">
                 <div>
@@ -1547,15 +1874,19 @@
                 <label>Notes (optional)</label>
                 <textarea id="bookNotes" placeholder="Tell us about your signing needs..."></textarea>
               </div>
+              <div>
+                <label>Payment</label>
+                <div id="card-container"></div>
+              </div>
             </div>
           </div>
         </div>
-        <button class="booking-submit" id="bookingSubmit" onclick="submitBooking()">Confirm Appointment</button>
+        <button class="booking-submit" id="bookingSubmit" onclick="submitBooking()">Pay & Confirm Appointment</button>
       </div>
 
       <div class="booking-confirmation" id="bookingConfirmation">
-        <h3>Appointment Confirmed</h3>
-        <p>Thank you! A confirmation email has been sent with your appointment details. We look forward to serving you.</p>
+        <h3>Appointment Confirmed & Paid</h3>
+        <p>Thank you! Payment has been processed and a confirmation email has been sent with your appointment details. We look forward to serving you.</p>
         <button class="booking-submit" style="margin-top:24px;" onclick="resetBooking()">Book Another Appointment</button>
       </div>
     </div>
@@ -1726,23 +2057,84 @@
   // ── BOOKING SYSTEM ──
   const BOOKING_API = 'https://compassionate-serenity-production.up.railway.app/api';
 
+  let selectedCategory = '';
   let selectedService = '';
+  let servicePrice = 0;
   let selectedLocation = '';
   let selectedDate = '';
   let selectedTime = '';
+  let addons = {};
   let calYear, calMonth;
+  let squareCard = null;
 
-  // Initialize calendar to current month
   const now = new Date();
   calYear = now.getFullYear();
   calMonth = now.getMonth();
   renderCalendar();
 
-  function selectService(el) {
+  // Initialize Square Web Payments
+  async function initSquare() {
+    if (!window.Square) return;
+    try {
+      const payments = window.Square.payments(SQUARE_APP_ID, SQUARE_LOCATION_ID);
+      squareCard = await payments.card();
+      await squareCard.attach('#card-container');
+    } catch (err) {
+      console.error('Square init error:', err);
+    }
+  }
+
+  // Square config — will be set after Square app is configured
+  const SQUARE_APP_ID = 'sandbox-sq0idb-PLACEHOLDER';
+  const SQUARE_LOCATION_ID = 'PLACEHOLDER';
+
+  // Load Square SDK
+  const sqScript = document.createElement('script');
+  sqScript.src = 'https://sandbox.web.squarecdn.com/v1/square.js';
+  sqScript.onload = initSquare;
+  document.head.appendChild(sqScript);
+
+  // ── SERVICE SELECTION ──
+  function selectCategory(el, category) {
     document.querySelectorAll('.service-option').forEach(o => o.classList.remove('selected'));
+    document.querySelectorAll('.sub-services').forEach(s => s.classList.remove('show'));
+    document.querySelectorAll('.sub-service').forEach(s => s.classList.remove('selected'));
     el.classList.add('selected');
-    el.querySelector('input').checked = true;
-    selectedService = el.querySelector('input').value;
+    selectedCategory = category;
+    selectedService = '';
+    servicePrice = 0;
+
+    document.getElementById('sub-' + category).classList.add('show');
+
+    // Show/hide relevant addon groups
+    document.getElementById('addonLocation').style.display = (category === 'general' || category === 'estate') ? 'block' : 'none';
+    document.getElementById('addonPremium').style.display = (category === 'loan') ? 'block' : 'none';
+    document.getElementById('addonApostille').style.display = (category === 'apostille') ? 'block' : 'none';
+
+    // Clear addons when changing category
+    addons = {};
+    document.querySelectorAll('.addon-option').forEach(a => a.classList.remove('selected'));
+
+    updateOrderSummary();
+  }
+
+  function selectSubService(e, el, name, price) {
+    e.stopPropagation();
+    document.querySelectorAll('.sub-service').forEach(s => s.classList.remove('selected'));
+    el.classList.add('selected');
+    selectedService = name;
+    servicePrice = price;
+    updateOrderSummary();
+  }
+
+  function toggleAddon(el, name, price) {
+    el.classList.toggle('selected');
+    if (addons[name]) {
+      delete addons[name];
+    } else {
+      addons[name] = price;
+    }
+    updateOrderSummary();
   }
 
   function selectLocation(el) {
@@ -1751,8 +2143,51 @@
     el.querySelector('input').checked = true;
     selectedLocation = el.querySelector('input').value;
     document.getElementById('addressField').style.display = selectedLocation === 'mobile' ? 'block' : 'none';
+    updateOrderSummary();
   }
 
+  // ── ORDER SUMMARY ──
+  function getTotal() {
+    let total = servicePrice;
+    for (const price of Object.values(addons)) total += price;
+    return total;
+  }
+
+  function updateOrderSummary() {
+    const itemsEl = document.getElementById('orderItems');
+    const totalEl = document.getElementById('orderTotal');
+    const priceEl = document.getElementById('totalPrice');
+
+    if (!selectedService && Object.keys(addons).length === 0) {
+      itemsEl.innerHTML = '<p class="order-empty">Select a service to begin</p>';
+      totalEl.style.display = 'none';
+      return;
+    }
+
+    let html = '';
+    if (selectedService) {
+      html += `<div class="order-item"><span>${selectedService}</span><span class="item-price">$${servicePrice.toLocaleString()}</span></div>`;
+    }
+    for (const [name, price] of Object.entries(addons)) {
+      html += `<div class="order-item"><span>${name}</span><span class="item-price">+$${price}</span></div>`;
+    }
+    if (selectedDate) {
+      const d = new Date(selectedDate + 'T00:00:00');
+      html += `<div class="order-item"><span>${d.toLocaleDateString('en-US', {weekday:'short', month:'short', day:'numeric'})}</span><span class="item-price">${selectedTime ? formatTimeLabel(selectedTime) : '—'}</span></div>`;
+    }
+
+    itemsEl.innerHTML = html;
+    totalEl.style.display = 'flex';
+    priceEl.textContent = '$' + getTotal().toLocaleString();
+  }
+
+  function formatTimeLabel(t) {
+    const [h, m] = t.split(':');
+    const hr = parseInt(h);
+    return `${hr % 12 || 12}:${m} ${hr >= 12 ? 'PM' : 'AM'}`;
+  }
+
+  // ── CALENDAR ──
   function renderCalendar() {
     const grid = document.getElementById('calGrid');
     const label = document.getElementById('calMonth');
@@ -1801,20 +2236,21 @@
       }
 
       slotsDiv.innerHTML = data.slots.map(slot => {
-        const [h, m] = slot.split(':');
-        const hr = parseInt(h);
-        const label = `${hr % 12 || 12}:${m} ${hr >= 12 ? 'PM' : 'AM'}`;
+        const label = formatTimeLabel(slot);
         return `<div class="time-slot" onclick="pickTime('${slot}', this)">${label}</div>`;
       }).join('');
     } catch {
       slotsDiv.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:var(--mid);font-size:13px;">Unable to load times. Please try again.</p>';
     }
+
+    updateOrderSummary();
   }
 
   function pickTime(time, el) {
     selectedTime = time;
     document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
     el.classList.add('selected');
+    updateOrderSummary();
   }
 
   function prevMonth() {
@@ -1829,6 +2265,7 @@
     renderCalendar();
   }
 
+  // ── SUBMIT BOOKING WITH PAYMENT ──
   async function submitBooking() {
     const fname = document.getElementById('bookFname').value.trim();
     const lname = document.getElementById('bookLname').value.trim();
@@ -1844,11 +2281,24 @@
     if (!selectedTime) return alert('Please pick a time');
     if (!fname || !lname || !email) return alert('Please fill in your name and email');
 
+    const total = getTotal();
+    if (total <= 0) return alert('Please select a service');
+
     const btn = document.getElementById('bookingSubmit');
     btn.disabled = true;
-    btn.textContent = 'Booking...';
+    btn.textContent = 'Processing Payment...';
 
     try {
+      // Tokenize card
+      let sourceId = null;
+      if (squareCard) {
+        const tokenResult = await squareCard.tokenize();
+        if (tokenResult.status !== 'OK') {
+          throw new Error('Please enter valid payment information');
+        }
+        sourceId = tokenResult.token;
+      }
+
       const res = await fetch(`${BOOKING_API}/bookings`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -1856,7 +2306,10 @@
           first_name: fname, last_name: lname, email, phone,
           service: selectedService, location_type: selectedLocation,
           client_address: address, appointment_date: selectedDate,
-          appointment_time: selectedTime, notes
+          appointment_time: selectedTime, notes,
+          amount: total,
+          addons: Object.keys(addons),
+          source_id: sourceId
         })
       });
 
@@ -1866,17 +2319,21 @@
       }
 
       document.getElementById('bookingForm').style.display = 'none';
+      document.getElementById('orderSummary').style.display = 'none';
       document.getElementById('bookingConfirmation').style.display = 'block';
     } catch (err) {
       alert(err.message || 'Something went wrong. Please try again.');
       btn.disabled = false;
-      btn.textContent = 'Confirm Appointment';
+      btn.textContent = 'Pay & Confirm Appointment';
     }
   }
 
   function resetBooking() {
-    selectedService = ''; selectedLocation = ''; selectedDate = ''; selectedTime = '';
-    document.querySelectorAll('.service-option, .location-option').forEach(o => o.classList.remove('selected'));
+    selectedCategory = ''; selectedService = ''; servicePrice = 0;
+    selectedLocation = ''; selectedDate = ''; selectedTime = '';
+    addons = {};
+    document.querySelectorAll('.service-option, .location-option, .sub-service, .addon-option').forEach(o => o.classList.remove('selected'));
+    document.querySelectorAll('.sub-services').forEach(s => s.classList.remove('show'));
     document.getElementById('addressField').style.display = 'none';
     document.getElementById('bookFname').value = '';
     document.getElementById('bookLname').value = '';
@@ -1889,10 +2346,12 @@
     calMonth = new Date().getMonth();
     renderCalendar();
     document.getElementById('bookingForm').style.display = 'block';
+    document.getElementById('orderSummary').style.display = 'block';
     document.getElementById('bookingConfirmation').style.display = 'none';
+    updateOrderSummary();
     const btn = document.getElementById('bookingSubmit');
     btn.disabled = false;
-    btn.textContent = 'Confirm Appointment';
+    btn.textContent = 'Pay & Confirm Appointment';
   }
 </script>
 </body>

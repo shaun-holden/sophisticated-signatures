@@ -591,33 +591,11 @@
 
     .founders-layout {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       gap: 60px;
-      max-width: 1100px;
+      max-width: 700px;
       margin: 0 auto;
       align-items: center;
-    }
-
-    .founder-img-wrap {
-      position: relative;
-      aspect-ratio: 3/4;
-      background: var(--cream);
-      overflow: hidden;
-    }
-
-    .founder-img-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-    }
-
-    .founder-img-wrap::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 30%;
-      background: linear-gradient(to top, rgba(13,42,29,0.2), transparent);
     }
 
     .founder-content .name {
@@ -1565,16 +1543,13 @@
 <!-- FOUNDERS -->
 <section id="founder" style="background:var(--white); padding: 100px 5vw;">
   <div style="text-align:center; margin-bottom: 60px;" class="reveal">
-    <p class="section-label">Meet the Founders</p>
+    <p class="section-label">Meet the Founder</p>
     <h2 class="section-title">The Leadership Behind Every Signature</h2>
   </div>
   <div class="founders-layout reveal">
-    <div class="founder-img-wrap">
-      <img src="images/founders.png" alt="Danielle Allen and Nathaniel Davis — Co-Founders of Sophisticated Signatures" />
-    </div>
     <div>
       <div style="margin-bottom: 40px;">
-        <p class="section-label" style="margin-bottom:8px;">Co-Founder</p>
+        <p class="section-label" style="margin-bottom:8px;">Founder</p>
         <h3 class="founder-content name" style="font-size:28px; margin:0 0 4px;">Danielle Allen</h3>
         <p class="founder-content role" style="margin-bottom:16px;">Certified Notary · NNA-Accredited Signing Agent</p>
         <p style="font-size:13px; color:var(--mid); line-height:1.75;">With a keen eye for detail and a commitment to accuracy, Danielle guides clients through every document — ensuring all signatures, initials, and notarizations are completed flawlessly. She offers flexible mobile and remote services designed to fit your schedule with the utmost discretion and professionalism.</p>
@@ -1582,17 +1557,6 @@
           <div class="cred">Certified Notary Public — State of Florida</div>
           <div class="cred">NNA-Accredited Loan Signing Agent</div>
           <div class="cred">RON Remote Online Notarization Specialist</div>
-        </div>
-      </div>
-      <div style="border-top: 1px solid var(--light); padding-top: 32px;">
-        <p class="section-label" style="margin-bottom:8px;">Co-Founder</p>
-        <h3 class="founder-content name" style="font-size:28px; margin:0 0 4px;">Nathaniel Davis</h3>
-        <p class="founder-content role" style="margin-bottom:16px;">Operations & Client Relations</p>
-        <p style="font-size:13px; color:var(--mid); line-height:1.75;">Nathaniel brings executive-level leadership to Sophisticated Signatures, overseeing operations and client relations with a focus on delivering a seamless, refined experience. His commitment to precision and white-glove service ensures every client interaction reflects the Sophisticated Signatures standard.</p>
-        <div class="credentials" style="margin-top:16px;">
-          <div class="cred">Co-Founder & Operations Director</div>
-          <div class="cred">Client Relations & Business Development</div>
-          <div class="cred">Compliance & Service Standards</div>
         </div>
       </div>
     </div>
